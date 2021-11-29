@@ -26,6 +26,21 @@ class Agenda:
         if flag == False:
             raise ValueError("L'évenement demandé n'existe pas")
 
+    def modify_event(self, title, ntitle, day, month, year):
+        """modify an event based on his name"""
+        flag = False
+        for event in self.data:
+            if title == event['title']:
+                flag = True
+                self.data.remove(event)
+        if flag == False:
+            raise ValueError("L'évenement demandé n'existe pas")
+        new_event = {}
+        new_event['title'] = ntitle
+        date = datetime.datetime(year, month, day)
+        new_event['date'] = date.strftime("%x")
+        self.data.append(new_event)
+
     @property
     def get_dates(self):
         return self.data
