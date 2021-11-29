@@ -34,10 +34,35 @@ class Agenda:
         return "Voici l'agenda de "+self.name
 
 
+def mainloop():
+    stop = False
+    while stop == False:
+        accord = input("Voulez-vous créer un agenda ?\noui/non\n").lower()
+        if accord == "non":
+            stop = True
+        elif accord == "oui":
+            nom = input("quel est votre nom ?")
+            nom = Agenda(nom)
+            ajout = input(
+                "voulez-vous ajouter un évènement ?\noui/non\n").lower()
+            qst = False
+            if ajout == "oui":
+                qst = True
+            while qst == True:
+                title = input("Titre de votre évènement: ")
+                day = int(input("Jour de l'évènement: "))
+                month = int(input("Mois de l'évènement: "))
+                year = int(input("Année de l'évènement: "))
+                nom.add_event(title, day, month, year)
+                print(nom.get_dates)
+                keep_asking = input(
+                    "voulez-vous continuer ? (oui/non)").lower()
+                if keep_asking == "non":
+                    qst = False
+            else:
+                print("Merci d'avoir utilisé notre MVP")
+                break
+
+
 if __name__ == '__main__':
-    chris = Agenda('Chris')
-    chris.add_event('présentation MVP', 29, 11, 2021)
-    chris.add_event('avancement du projet', 30, 11, 2021)
-    #chris.delete_event('présentation MVP')
-    print(chris)
-    print(chris.get_dates)
+    mainloop()
