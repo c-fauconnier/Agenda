@@ -26,6 +26,21 @@ class Agenda:
         if flag == False:
             raise ValueError("L'évenement demandé n'existe pas")
 
+    def modify_event(self, title, ntitle, day, month, year):
+        """modify an event based on his name"""
+        flag = False
+        for event in self.data:
+            if title == event['title']:
+                flag = True
+                self.data.remove(event)
+        if flag == False:
+            raise ValueError("L'évenement demandé n'existe pas")
+        new_event = {}
+        new_event['title'] = ntitle
+        date = datetime.datetime(year, month, day)
+        new_event['date'] = date.strftime("%x")
+        self.data.append(new_event)
+
     @property
     def get_dates(self):
         return self.data
@@ -38,6 +53,7 @@ if __name__ == '__main__':
     chris = Agenda('Chris')
     igor = Agenda('Igor')
     igor.add_event('TP7', 30,11,2021)
+    igor.modify_event('TP7', 'TP8', 30,11,2021)
     chris.add_event('présentation MVP', 29, 11, 2021)
     chris.add_event('avancement du projet', 30, 11, 2021)
     #chris.delete_event('présentation MVP')
