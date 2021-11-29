@@ -53,6 +53,7 @@ if __name__ == '__main__':
     chris = Agenda('Chris')
     igor = Agenda('Igor')
     igor.add_event('TP7', 30,11,2021)
+    igor.modify_event('TP6', 'TP8', 30,11,2021)
     igor.modify_event('TP7', 'TP8', 30,11,2021)
     chris.add_event('présentation MVP', 29, 11, 2021)
     chris.add_event('avancement du projet', 30, 11, 2021)
