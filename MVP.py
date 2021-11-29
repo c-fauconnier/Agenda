@@ -36,8 +36,12 @@ class Agenda:
 
 if __name__ == '__main__':
     chris = Agenda('Chris')
+    igor = Agenda('Igor')
+    igor.add_event('TP7', 30,11,2021)
     chris.add_event('présentation MVP', 29, 11, 2021)
     chris.add_event('avancement du projet', 30, 11, 2021)
     #chris.delete_event('présentation MVP')
     print(chris)
     print(chris.get_dates)
+    print(igor)
+    print(igor.get_dates)
