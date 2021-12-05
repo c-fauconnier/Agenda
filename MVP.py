@@ -48,6 +48,7 @@ class Agenda:
     def __str__(self):
         return "Voici l'agenda de "+self.name
 
+
 def mainloop():
     stop = False
     while stop == False:
@@ -73,6 +74,37 @@ def mainloop():
                     "voulez-vous continuer ? (oui/non)").lower()
                 if keep_asking == "non":
                     qst = False
+            modif = input(
+                "Voulez-vous modifier un évènement ?\noui/non\n").lower()
+            if modif == "oui":
+                qst = True
+            while qst == True:
+                print(nom.get_dates)
+                title = input("Titre de l'évènement à modifier: ")
+                ntitle = input("Nom du nouvel évènement: ")
+                day = int(input("Jour de l'évènement: "))
+                month = int(input("Mois de l'évènement: "))
+                year = int(input("Année de l'évènement: "))
+                nom.modify_event(title, ntitle, day, month, year)
+                print(nom.get_dates)
+                keep_asking = input(
+                    "voulez-vous continuer de modifier ? (oui/non)\n").lower()
+                if keep_asking == "non":
+                    qst = False
+            delete = input(
+                "Voulez-vous supprimer un event ?\noui/non\n").lower()
+            if delete == 'oui':
+                qst = True
+            while qst == True:
+                print(nom.get_dates)
+                title = input("Titre de l'évènement à supprimer: ")
+                nom.delete_event(title)
+                print(nom.get_dates)
+                keep_asking = input(
+                    "voulez-vous supprimer d'autres events ? (oui/non)\n").lower()
+                if keep_asking == "non":
+                    qst = False
+
             else:
                 print("Merci d'avoir utilisé notre MVP")
                 break
