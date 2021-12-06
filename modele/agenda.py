@@ -7,7 +7,7 @@ class MainApp(MDApp):
     def build(self):
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "BlueGray"
-        return Builder.load_file('agenda.kv')
+        return Builder.load_file('../vue/agenda.kv')
 
     # Click OK
     def on_save(self, instance, value, date_range):
